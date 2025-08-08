@@ -1,0 +1,25 @@
+{
+    "name": "Hand fan",
+	"short_name": "fan",
+    "icons": [
+        {
+          "src": "./images/icon512x512.png",
+          "sizes": "512x512",
+          "type": " image/png",
+          "purpose": "any"
+        }
+    ],
+  "screenshots": [
+    {
+      "src": "./images/1280x720.png",
+      "sizes": "1280x720",
+      "type": "image/jpg",
+      "form_factor": "wide",
+      "label": "Homescreen of fan App"
+    }
+  ],
+  "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "start_url": "./",
+    "display": "standalone"
+}
