@@ -13,7 +13,7 @@ function delayReject(time) {
 }
 
 self.addEventListener("install", (evt) => {
-    evt.waitUntil(precache());
+    evt.waitUntil(precache().then(() => self.skipWaiting()));
 });
 
 const deleteCache = async (key) => {
