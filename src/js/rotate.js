@@ -2,14 +2,21 @@ import clamp from "./clamp.js";
 
 export default function rotate(logger) {
     const root = document.documentElement;
-    let prevSpeed = 0;
+    let prevSpeed = 200;
     let angle = 0;
-    const coeff = 0.05;
+    const coeff = 0.002;
+    let start;
     // root.style.setProperty("--field-size", settings.size);
-    const redraw = () => {
-        angle = (angle + prevSpeed * coeff) % 360;
+    const redraw = (timestamp) => {
+        if (start === undefined) {
+            start = timestamp;
+        }
+        const elapsed = timestamp - start;
+        console.log(elapsed);
+        angle = (angle + prevSpeed * coeff * elapsed) % 360;
         root.style.setProperty("--tfan-angle", angle+"deg");
         requestAnimationFrame(redraw);
+        start = timestamp;
     };
     requestAnimationFrame(redraw);
     if (window.DeviceMotionEvent) {
@@ -22,11 +29,9 @@ export default function rotate(logger) {
                 const gamma = rotationRate.gamma; // Rotation rate around Y-axis (side to side)
                 const positiveSpeed = Math.abs(alpha);
 
-                if (Math.abs(prevSpeed - positiveSpeed) > 2) {
-                    prevSpeed = Math.max(0, clamp(prevSpeed - 50, positiveSpeed, prevSpeed + 50));
-                }
+                prevSpeed = Math.max(0, clamp(prevSpeed - 50, positiveSpeed, prevSpeed + 50));
 
-                if (prevSpeed < 2) {
+                if (prevSpeed < 5) {
                     prevSpeed = 0;
                 }
 
