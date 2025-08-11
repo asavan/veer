@@ -26,6 +26,10 @@ export default function rotate(logger) {
                     prevSpeed = Math.max(0, clamp(prevSpeed - 50, positiveSpeed, prevSpeed + 50));
                 }
 
+                if (prevSpeed < 2) {
+                    prevSpeed = 0;
+                }
+
                 logger.log(
                     `Rotation Rate - Alpha: ${alpha ? alpha.toFixed(2) : "N/A"} °/s, ` +
                     `Beta: ${beta ? beta.toFixed(2) : "N/A"} °/s, ` +
@@ -35,6 +39,6 @@ export default function rotate(logger) {
             }
         });
     } else {
-        // logger.log( "Device Motion events not supported on this device.");
+        logger.log( "Device Motion events not supported on this device.");
     }
 }

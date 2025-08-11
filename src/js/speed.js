@@ -18,8 +18,11 @@ export default function speed(logger) {
                 speedY = (acceleration.y - lastY) / deltaTime;
                 speedZ = (acceleration.z - lastZ) / deltaTime;
 
+                const xStr = Math.abs(speedX).toFixed(2);
+                const yStr = Math.abs(speedY).toFixed(2);
+                const zStr = Math.abs(speedZ).toFixed(2);
                 // Можно использовать speedX, speedY, speedZ для отображения или дальнейшей обработки
-                logger.log({"X:": speedX.toFixed(2), "Y:": speedY.toFixed(2), "Z:": speedZ.toFixed(2)});
+                logger.log({"X:": xStr, "Y:": yStr, "Z:": zStr});
             }
 
             lastTime = currentTime;
