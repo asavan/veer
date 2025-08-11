@@ -1,7 +1,6 @@
 import settings from "./settings.js";
 import loggerFunc from "./logger.js";
 import rotate from "./rotate.js";
-import speed from "./speed.js";
 
 function stringToBoolean(string){
     switch (string.toLowerCase().trim()){
@@ -29,7 +28,4 @@ export default function starter(window, document) {
     parseSettings(window, document, settings);
     const logger = loggerFunc(document, settings);
     rotate(logger);
-
-    const loggerSpeed = loggerFunc(document, settings, 3, document.querySelector(".log-speed"));
-    speed(loggerSpeed);
 }

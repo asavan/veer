@@ -29,9 +29,9 @@ export default function rotate(logger) {
                 const gamma = rotationRate.gamma; // Rotation rate around Y-axis (side to side)
                 const positiveSpeed = Math.abs(alpha);
 
-                prevSpeed = Math.max(0, clamp(prevSpeed - 50, positiveSpeed, prevSpeed + 50));
+                prevSpeed = clamp(prevSpeed - 20, positiveSpeed, prevSpeed + 20);
 
-                if (prevSpeed < 5) {
+                if (prevSpeed < 10) {
                     prevSpeed = 0;
                 }
 
