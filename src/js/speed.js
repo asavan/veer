@@ -19,8 +19,7 @@ export default function speed(logger) {
                 speedZ = (acceleration.z - lastZ) / deltaTime;
 
                 // Можно использовать speedX, speedY, speedZ для отображения или дальнейшей обработки
-                logger.log("Скорость по X:", speedX, "Скорость по Y:", speedY, "Скорость по Z:", speedZ);
-
+                logger.log({"Скорость по X:": speedX, "Скорость по Y:": speedY, "Скорость по Z:": speedZ});
             }
 
             lastTime = currentTime;

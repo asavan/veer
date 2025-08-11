@@ -12,10 +12,10 @@ export default function loggerFunc(document, settings, level, el) {
         if (el) {
             if (Error.isError(message)) {
                 message = message.toString();
-            } else if (typeof message == "object" && JSON && JSON.stringify ) {
+            } else if (typeof message === "object" && JSON && JSON.stringify ) {
                 message = JSON.stringify(message);
             }
-            el.innerHTML += message + "<br />";
+            el.innerHTML = message + "<br />";
         }
     };
 
