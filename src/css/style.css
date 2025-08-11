@@ -6,6 +6,7 @@
 
 :root {
     --main-color: #F0F8FF;
+    --tfan-angle: 0;
     --header-size: 5vw;
     --footer-size: 18vw;
     --container-img-size: 10vw;
@@ -40,6 +41,12 @@ main {
     overflow: scroll hidden;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
+}
+
+.tfan {
+    transform: rotate(var(--tfan-angle));
+    width: 100%;
+    height: 100%;
 }
 
 .wrapper {
