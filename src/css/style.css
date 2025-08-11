@@ -28,7 +28,6 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    background-color: black;
 }
 
 .content {
