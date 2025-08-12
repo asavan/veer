@@ -8,10 +8,10 @@ export default function motion(window, document, logger, handleDeviceMotion) {
     if (typeof window.DeviceMotionEvent.requestPermission === "function") {
         document.querySelector(".content").addEventListener("scroll", async () => {
             if (tryPermission) return;
-            tryPermission = true;
             try {
                 const permissionState = await DeviceMotionEvent.requestPermission();
                 if (permissionState === "granted") {
+                    tryPermission = true;
                     logger.log("Device motion permission granted.");
                     // Start listening for device motion events
                     window.addEventListener("devicemotion", handleDeviceMotion);
@@ -19,11 +19,11 @@ export default function motion(window, document, logger, handleDeviceMotion) {
                     logger.log("Device motion permission denied.");
                 }
             } catch (error) {
-                console.error("Error requesting device motion permission:", error);
+                logger.error("Error requesting device motion permission:", error);
             }
         });
     } else {
-        console.log("DeviceMotionEvent.requestPermission() is not supported in this browser.");
+        logger.log("DeviceMotionEvent.requestPermission() is not supported in this browser.");
         // Proceed without explicit permission request if not needed or supported
         window.addEventListener("devicemotion", handleDeviceMotion);
     }
