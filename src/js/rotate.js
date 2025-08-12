@@ -41,6 +41,6 @@ export default function rotate(document, logger) {
         } else {
             logger.log("Rotation Rate data not available.");
         }
-    }
-    return {handleDeviceMotion}
+    };
+    return {handleDeviceMotion};
 }
