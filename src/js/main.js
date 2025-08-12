@@ -1,6 +1,7 @@
 import settings from "./settings.js";
 import loggerFunc from "./logger.js";
 import rotate from "./rotate.js";
+import motion from "./motion.js";
 
 function stringToBoolean(string){
     switch (string.toLowerCase().trim()){
@@ -27,5 +28,6 @@ function parseSettings(window, document, settings) {
 export default function starter(window, document) {
     parseSettings(window, document, settings);
     const logger = loggerFunc(document, settings);
-    rotate(logger);
+    const rotator = rotate(document, logger);
+    motion(window, document, logger, rotator.handleDeviceMotion);
 }
