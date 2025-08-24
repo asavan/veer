@@ -17,16 +17,14 @@ import java.util.Map;
 public class BtnUtils {
     private final int staticContentPort;
     private final int webSocketPort;
-    private final boolean secure;
     private final Activity activity;
     private AndroidStaticAssetsServer server = null;
     private ChatServer webSocketServer = null;
 
-    public BtnUtils(Activity activity, int staticContentPort, int webSocketPort, boolean secure) {
+    public BtnUtils(Activity activity, int staticContentPort, int webSocketPort) {
         this.staticContentPort = staticContentPort;
         this.webSocketPort = webSocketPort;
         this.activity = activity;
-        this.secure = secure;
     }
 
     public void addButtonBrowser(final String host, Map<String, String> parameters, int btnId) {
@@ -66,7 +64,7 @@ public class BtnUtils {
         }
         try {
             Context applicationContext = activity.getApplicationContext();
-            server = new AndroidStaticAssetsServer(applicationContext, staticContentPort, secure);
+            server = new AndroidStaticAssetsServer(applicationContext, staticContentPort);
             if (webSocketServer == null) {
                 webSocketServer = new ChatServer(webSocketPort);
                 webSocketServer.start();
