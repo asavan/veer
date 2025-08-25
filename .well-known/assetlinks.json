@@ -3,7 +3,8 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {"namespace": "android_app", "package_name": "ru.asavan.veer",
     "sha256_cert_fingerprints": [
-      "C4:92:AB:22:34:1A:2C:E7:F3:37:98:BE:ED:EC:F0:9A:EE:BE:10:76:91:CE:D8:5C:68:79:7F:5F:57:54:0F:4F"
+      "C4:92:AB:22:34:1A:2C:E7:F3:37:98:BE:ED:EC:F0:9A:EE:BE:10:76:91:CE:D8:5C:68:79:7F:5F:57:54:0F:4F",
+      "37:74:76:0B:55:BB:74:92:13:8E:D5:6B:F1:B4:9C:FD:2B:E0:E1:E7:40:DD:A5:08:3A:11:00:49:2E:2D:65:9E"
     ]
   }
 }

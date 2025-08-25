@@ -16,6 +16,18 @@
       "type": "image/jpg",
       "form_factor": "wide",
       "label": "Homescreen of fan App"
+    },
+	{
+      "src": "./images/screen1.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpg",
+      "label": "Homescreen of fan App red"
+    },
+	{
+      "src": "./images/screen2.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpg",
+      "label": "Homescreen of fan App black"
     }
   ],
   "theme_color": "#ffffff",
