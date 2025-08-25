@@ -33,9 +33,6 @@ android {
 
 dependencies {
 
-    implementation(libs.appcompat)
-    implementation(libs.material)
-
     implementation(libs.nanohttpd)
     implementation(libs.java.websocket)
     implementation(libs.androidbrowserhelper)
@@ -44,4 +41,3 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
-
