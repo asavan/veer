@@ -7,7 +7,9 @@ export default function motion(window, document, logger, handleDeviceMotion) {
     }
     if (typeof window.DeviceMotionEvent.requestPermission === "function") {
         document.querySelector(".content").addEventListener("scroll", async () => {
-            if (tryPermission) return;
+            if (tryPermission) {
+                return;
+            }
             try {
                 const permissionState = await DeviceMotionEvent.requestPermission();
                 if (permissionState === "granted") {
