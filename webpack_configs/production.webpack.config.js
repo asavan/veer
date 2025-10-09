@@ -73,7 +73,7 @@ const prodConfig = () => {
                 patterns: [
                     { from: "./src/images", to: "./images" },
                     { from: "./github", to: "./" },
-                    { from: "./src/manifest.json", to: "./" }
+                    { from: "./src/app.webmanifest", to: "./" }
                 ],
             })
         ]
