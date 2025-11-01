@@ -12,7 +12,7 @@ export default function rotate(document, logger) {
             start = timestamp;
         }
         const elapsed = timestamp - start;
-        console.log(elapsed);
+        // console.log(elapsed);
         angle = (angle + prevSpeed * coeff * elapsed) % 360;
         root.style.setProperty("--tfan-angle", angle+"deg");
         requestAnimationFrame(redraw);
@@ -21,26 +21,23 @@ export default function rotate(document, logger) {
     requestAnimationFrame(redraw);
     const handleDeviceMotion = (event) => {
         const rotationRate = event.rotationRate;
-
-        if (rotationRate) { // Check if rotationRate object exists
-            const alpha = rotationRate.alpha; // Rotation rate around Z-axis (perpendicular to screen)
-            const beta = rotationRate.beta; // Rotation rate around X-axis (front to back)
-            const gamma = rotationRate.gamma; // Rotation rate around Y-axis (side to side)
-            const positiveSpeed = Math.abs(alpha);
-
-            prevSpeed = clamp(prevSpeed - 20, positiveSpeed, prevSpeed + 20);
-
-            if (prevSpeed < 10) {
-                prevSpeed = 0;
-            }
-
-            logger.log(
-                `Rotation Rate - Alpha: ${alpha ? alpha.toFixed(2) : "N/A"} °/s, ` +
-                `Beta: ${beta ? beta.toFixed(2) : "N/A"} °/s, ` +
-                `Gamma: ${gamma ? gamma.toFixed(2) : "N/A"} °/s`);
-        } else {
+        if (!rotationRate || rotationRate.alpha === null) {
             logger.log("Rotation Rate data not available.");
+            return;
         }
+
+        const alpha = rotationRate.alpha;
+        const beta = rotationRate.beta;
+        const gamma = rotationRate.gamma;
+        const positiveSpeed = Math.abs(alpha);
+        prevSpeed = clamp(prevSpeed - 20, positiveSpeed, prevSpeed + 20);
+        if (prevSpeed < 10) {
+            prevSpeed = 0;
+        }
+        logger.log(
+            `Rotation Rate - Alpha: ${alpha ? alpha.toFixed(2) : "N/A"} °/s, ` +
+            `Beta: ${beta ? beta.toFixed(2) : "N/A"} °/s, ` +
+            `Gamma: ${gamma ? gamma.toFixed(2) : "N/A"} °/s`);
     };
     return {handleDeviceMotion};
 }
