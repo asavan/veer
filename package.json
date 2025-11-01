@@ -20,7 +20,7 @@
     "updates:fix": "npx ncu -u && npm install && npm audit fix"
   },
   "devDependencies": {
-    "devdeps": "github:asavan/dev-deps#v0.0.4"
+    "devdeps": "github:asavan/dev-deps#v0.0.6"
   },
   "dependencies": {
     "netutils": "github:asavan/netutils#v0.0.8"
