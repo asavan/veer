@@ -23,7 +23,7 @@ public class AndroidWebServerActivity extends Activity {
         try {
             HostUtils hostUtils = new HostUtils(STATIC_CONTENT_PORT, WEB_SOCKET_PORT, secure);
             addButtons(IpUtils.getIPAddressSafe(), hostUtils);
-            btnUtils.launchWebView(WEB_VIEW_URL, null);
+            btnUtils.launchTwa(hostUtils.getStaticHost(IpUtils.LOCALHOST), null);
         } catch (Exception e) {
             Log.e(MAIN_LOG_TAG, "main", e);
         }

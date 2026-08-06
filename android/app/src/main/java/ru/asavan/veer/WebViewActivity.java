@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.webkit.PermissionRequest;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -15,6 +17,7 @@ import androidx.webkit.WebViewClientCompat;
 
 public class WebViewActivity extends Activity {
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +36,18 @@ public class WebViewActivity extends Activity {
                 return assetLoader.shouldInterceptRequest(request.getUrl());
             }
         });
-        WebSettings webViewSettings = webView.getSettings();
-        webViewSettings.setAllowFileAccess(false);
-        webViewSettings.setAllowContentAccess(false);
+
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                // Grant permissions inside the webview container context
+                request.grant(request.getResources());
+            }
+        });
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
 //        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//        webSettings.setDomStorageEnabled(true);
         webView.setBackgroundColor(Color.TRANSPARENT);
         String url = getIntent().getStringExtra("url");
         webView.loadUrl(url);
