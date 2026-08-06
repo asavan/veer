@@ -25,9 +25,9 @@
   },
   "homepage": "https://asavan.github.io/veer/",
   "devDependencies": {
-    "devdeps": "github:asavan/dev-deps#v0.0.5"
+    "devdeps": "github:asavan/dev-deps#v0.1.2"
   },
   "dependencies": {
-    "netutils": "github:asavan/netutils#v0.0.8"
+    "netutils": "github:asavan/netutils#v0.1.7"
   }
 }

@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace = "ru.asavan.veer"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "ru.asavan.veer"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 2
-        versionName = "1.1"
+        targetSdk = 37
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +27,9 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            optimization {
+                enable = false
+            }
         }
     }
     compileOptions {
@@ -43,8 +41,8 @@ android {
 dependencies {
 
     implementation(libs.nanohttpd)
-    implementation(libs.java.websocket)
     implementation(libs.androidbrowserhelper)
+    implementation(libs.webkit)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

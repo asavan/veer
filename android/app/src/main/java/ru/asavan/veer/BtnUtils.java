@@ -16,14 +16,11 @@ import java.util.Map;
 
 public class BtnUtils {
     private final int staticContentPort;
-    private final int webSocketPort;
     private final Activity activity;
     private AndroidStaticAssetsServer server = null;
-    private ChatServer webSocketServer = null;
 
-    public BtnUtils(Activity activity, int staticContentPort, int webSocketPort) {
+    public BtnUtils(Activity activity, int staticContentPort) {
         this.staticContentPort = staticContentPort;
-        this.webSocketPort = webSocketPort;
         this.activity = activity;
     }
 
@@ -50,6 +47,18 @@ public class BtnUtils {
         activity.startActivity(new Intent(Intent.ACTION_VIEW, launchUri));
     }
 
+    public void launchWebView(String host, Map<String, String> parameters) {
+        Intent intent = new Intent(activity.getApplicationContext(), WebViewActivity.class);
+        String launchUrl = UrlUtils.getLaunchUrl(host, parameters);
+        Log.i("BTN_UTILS", launchUrl);
+        intent.putExtra("url", launchUrl);
+        activity.startActivity(intent);
+    }
+
+    public void addButtonWebView(final String host, Map<String, String> parameters, int btnId) {
+        Button btn = activity.findViewById(btnId);
+        btn.setOnClickListener(v -> launchWebView(host, parameters));
+    }
 
     public void launchTwa(String host, Map<String, String> parameters) {
         startServerAndSocket();
@@ -65,10 +74,6 @@ public class BtnUtils {
         try {
             Context applicationContext = activity.getApplicationContext();
             server = new AndroidStaticAssetsServer(applicationContext, staticContentPort);
-            if (webSocketServer == null) {
-                webSocketServer = new ChatServer(webSocketPort);
-                webSocketServer.start();
-            }
         } catch (Exception e) {
             Log.e("BTN_UTILS", "main", e);
         }
@@ -78,12 +83,6 @@ public class BtnUtils {
         if (server != null) {
             server.stop();
         }
-        if (webSocketServer != null) {
-            try {
-                webSocketServer.stop(1000);
-            } catch (InterruptedException e) {
-                Log.e("BTN_UTILS", "onStop", e);
-            }
-        }
+        server = null;
     }
 }
