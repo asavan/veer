@@ -10,8 +10,8 @@ android {
         applicationId = "ru.asavan.veer"
         minSdk = 24
         targetSdk = 37
-        versionCode = 7
-        versionName = "1.2.4"
+        versionCode = 8
+        versionName = "1.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,8 +40,6 @@ android {
 
 dependencies {
 
-    implementation(libs.nanohttpd)
-    implementation(libs.androidbrowserhelper)
     implementation(libs.webkit)
 
     testImplementation(libs.junit)

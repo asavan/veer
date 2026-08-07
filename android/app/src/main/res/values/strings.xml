@@ -1,31 +1,5 @@
 <resources>
     <string name="app_name">veer</string>
-    <string name="asset_statements" translatable="false">
-    [{
-        \"relation\": [\"delegate_permission/common.handle_all_urls\"],
-        \"target\": {
-        \"namespace\": \"web\",
-        \"site\": \"http://127.0.0.1:8080\"}
-        },
-        {
-        \"relation\": [\"delegate_permission/common.handle_all_urls\"],
-        \"target\": {
-        \"namespace\": \"web\",
-        \"site\": \"http://localhost:8080\"}
-        },
-        {
-        \"relation\": [\"delegate_permission/common.handle_all_urls\"],
-        \"target\": {
-        \"namespace\": \"web\",
-        \"site\": \"http://localhost\"}
-        },
-        {
-        \"relation\": [\"delegate_permission/common.handle_all_urls\"],
-        \"target\": {
-        \"namespace\": \"web\",
-        \"site\": \"https://asavan.github.io\"}
-    }]
-    </string>
     <string name="ai">Ai in webview</string>
     <string name="ai_localhost">Ai in webview localhost</string>
     <string name="launch_twa_ai">Launch ai newest version</string>
