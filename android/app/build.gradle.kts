@@ -15,26 +15,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    packaging {
-        jniLibs {
-            pickFirsts += "META-INF/nanohttpd/*"
-        }
-        resources {
-            pickFirsts += "META-INF/nanohttpd/*"
-        }
-    }
+    
 
     buildTypes {
         release {
             optimization {
-                enable = false
+                enable = true
             }
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
