@@ -1,12 +1,7 @@
-import settings from "./settings.js";
 import rotate from "./rotate.js";
 import motion from "./motion.js";
 
-import {loggerFunc, parseSettings} from "netutils";
-
 export default function starter(window, document) {
-    parseSettings(window.location.search, settings);
-    const logger = loggerFunc(document, settings);
-    const rotator = rotate(document, logger);
-    motion(window, document, logger, rotator.handleDeviceMotion);
+    const rotator = rotate(document, console);
+    motion(window, document, console, rotator.handleDeviceMotion);
 }
